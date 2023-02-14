@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <form action="https://mms-it.com">
+        <input type="text" name="test">
+        <button>Submit</button>
+    </form> -->
+
+    <div class="box">
+      <h1 class="h1">Heading</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quasi,
+        laudantium repellendus voluptatum ex rem vitae soluta exercitationem,
+        rerum deserunt modi nostrum corporis illum doloribus itaque incidunt
+        sequi ipsum. Natus!
+      </p>
+      <ul class="list">
+        <li class="listItem">Apple</li>
+        <li class="listItem">Orange</li>
+        <li class="listItem">Mango</li>
+      </ul>
+    </div>
+
+    <script>
+      const box = document.querySelector(".box");
+      const h1 = document.querySelector(".h1");
+      const list = document.querySelector(".list");
+      const listItem = document.querySelectorAll(".listItem");
+
+      const eventLists = ["click", "mouseover", "mouseout"];
+
+      eventLists.forEach((eventList) => {
+        h1.addEventListener(eventList, (event) => console.log(event));
+      });
+
+      // listItem.forEach((li) => {
+      //   li.addEventListener("click", () => console.log(li.innerText));
+      // });
+
+      // event bubbling is going child to parent.
+      // event capture is goinge parent to child.
+
+      //   box.addEventListener("click", () => console.log("U clicked Box"));
+      //   list.addEventListener("click", (event) => {
+      //     event.stopPropagation();
+      //     console.log("U clicked List")
+      // },true);
+      //   listItem.addEventListener("click", (event) => {
+      //     // event.stopPropagation();
+      //     console.log("U clicked List-Item");
+      //   },false);
+
+      // const f = document.querySelector("form");
+      // f.addEventListener("submit",event =>{
+      //     event.preventDefault();
+      // })
+    </script>
+  </body>
+</html>
