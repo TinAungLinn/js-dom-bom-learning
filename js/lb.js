@@ -15,10 +15,12 @@ const data = [
 
 const counter = () => {
   const totalCount = lists.children.length;
-  const doneTotalCount = [...lists.children].filter(el => el.querySelector(".form-check-input").checked === true).length;
+  const doneTotalCount = [...lists.children].filter(
+    (el) => el.querySelector(".form-check-input").checked === true
+  ).length;
   total.innerText = totalCount;
   doneTotal.innerText = doneTotalCount;
-}
+};
 
 const createLi = (text) => {
   const li = document.createElement("li");
@@ -34,10 +36,10 @@ const createLi = (text) => {
         </label>
     </div>
     <div class="btn-group">
-      <button class=" btn btn-sm btn-outline-dark" onclick="edit(event)">
+      <button class=" btn btn-sm btn-outline-dark edit-btn">
         <i class="bi bi-pencil"></i>
       </button>
-      <button class=" btn btn-sm btn-outline-dark" onclick="del(event)">
+      <button class=" btn btn-sm btn-outline-dark del-btn">
         <i class="bi bi-trash3 pe-none"></i>
       </button>
     </div>
@@ -54,12 +56,35 @@ const del = (event) => {
 
 data.forEach((d) => lists.append(createLi(d)));
 
+// [...lists.children].forEach((li) => {
+//   li.querySelector(".edit-btn").addEventListener("click", edit);
+//   li.querySelector(".del-btn").addEventListener("click", del);
+// });
+
+lists.addEventListener("click", (event) => {
+  // console.log(event.target)
+  if (event.target.classList.contains("edit-btn")) {
+    edit(event);
+    // const old = event.target.closest("li").querySelector(".form-check-label");
+    // const newtext = prompt("Input new text", old.innerText);
+    // if (newtext && newtext.trim()) {
+    //   old.innerText = newtext;
+    // }
+  } else if (event.target.classList.contains("del-btn")) {
+    del(event);
+    //   if (confirm("Are U sure to delete?")) {
+    //     event.target.closest("li").remove();
+    //     counter();
+  }
+  // }
+});
+
 const edit = (event) => {
   const old = event.target.closest("li").querySelector(".form-check-label");
   const newtext = prompt("Input new text", old.innerText);
-  if(newtext && newtext.trim()){
+  if (newtext && newtext.trim()) {
     old.innerText = newtext;
-  };
+  }
 };
 
 const done = (event) => {
@@ -89,5 +114,4 @@ textInput.addEventListener("keyup", (event) => {
   }
 });
 
-
-window.addEventListener("load",counter);
+window.addEventListener("load", counter);

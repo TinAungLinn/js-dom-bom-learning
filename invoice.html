@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/invoice.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="my-3">Invoice App</h1>
+          <div class="border p-3">
+            <form id="invoiceForm">
+              <div class="row">
+                <div class="col">
+                  <label for="" class="form-label">Select Service</label>
+                  <select
+                    class="form-select"
+                    name=""
+                    id="selectService"
+                  ></select>
+                </div>
+                <div class="col">
+                  <label for="" class="form-label">Input Quantity</label>
+                  <input type="number" class="form-control" id="quantity" />
+                </div>
+                <div class="col">
+                  <button class="btn btn-dark w-100 h-100">
+                    <i class="bi bi-plus-circle"></i>
+                    Add
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/invoice.js"></script>
+  </body>
+</html>
