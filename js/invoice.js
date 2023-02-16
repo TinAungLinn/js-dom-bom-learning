@@ -82,8 +82,8 @@ const showTable = () => {
 
 //Service Option Loop
 
-services.forEach((service) =>
-  selectService.append(new Option(service.title, service.id))
+services.forEach(({ title, id }) =>
+  selectService.append(new Option(title, id))
 );
 
 //Data collect from from
@@ -101,9 +101,7 @@ invoiceForm.addEventListener("submit", (event) => {
   //   services.find((service) => service.id == selectService.value)
   // );
 
-  const selectedService = services.find(
-    (service) => service.id == selectService.value
-  );
+  const selectedService = services.find(({ id }) => id == selectService.value);
 
   const isExistedService = [...lists.children].find(
     (el) => el.getAttribute("service-id") == selectedService.id
