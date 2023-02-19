@@ -8,12 +8,29 @@ $component-active-bg: black;
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 .del-btn {
-//   display: none;
+  //   display: none;
   transform: scale(0);
   transition: 0.5s;
 }
 
 tr:hover .del-btn {
-    // display: inline;
-    transform: scale(1);
+  // display: inline;
+  transform: scale(1);
+}
+
+.bg-transparent-50 {
+  background-color: rgba(0, 0, 0, 0.484);
+}
+
+.side-bar {
+  transform: translateX(-100%);
+  transition: 0.5s;
+}
+
+.side-bar.active {
+  transform: translateX(0);
+}
+
+#sideBarBtn:active{
+  transform: scale(0.8);
 }

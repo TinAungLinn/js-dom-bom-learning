@@ -34,8 +34,14 @@ const subTotal = document.querySelector("#subTotal");
 const tax = document.querySelector("#tax");
 const total = document.querySelector("#total");
 const listTable = document.querySelector("#listTable");
+const addServiceOpenBtn = document.querySelector("#addServiceOpenBtn");
+const addServiceModal = document.querySelector("#addServiceModal");
+const addServiceForm = document.querySelector("#addServiceForm");
+const closeServiceModalBtn = document.querySelector("#closeServiceModalBtn");
+const sideBarBtn = document.querySelectorAll("#sideBarBtn");
+const sideBar = document.querySelector(".side-bar");
 
-//Process (Tesks)
+//Process (Task)
 
 //Function
 
@@ -130,4 +136,40 @@ app.addEventListener("click", (event) => {
     findTotal();
     showTable();
   }
+});
+
+addServiceOpenBtn.addEventListener("click", () => {
+  addServiceModal.classList.remove("d-none");
+});
+
+closeServiceModalBtn.addEventListener("click", () => {
+  addServiceModal.classList.add("d-none");
+});
+
+// adding new service with modal.
+addServiceForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  // update services
+  const formData = new FormData(event.target);
+  const id = Date.now();
+  services.push({
+    id,
+    title: formData.get("serviceTitle"),
+    price: formData.get("servicePrice"),
+  });
+
+  // update select services options
+  selectService.append(new Option(formData.get("serviceTitle"), id));
+
+  // close modal
+  event.target.reset();
+  addServiceModal.classList.add("d-none");
+});
+
+// side bar close open
+sideBarBtn.forEach((el) => {
+  el.addEventListener("click", () => {
+    sideBar.classList.toggle("active");
+  });
 });
