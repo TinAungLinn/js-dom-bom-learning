@@ -9,20 +9,26 @@
   </head>
   <body>
     <div id="app">
-      <div class="side-bar position-fixed bg-black w-25 vh-100">
-        <div class="d-flex justify-content-between align-items-center text-white p-2">
+      <!-- <div class="side-bar position-fixed bg-black w-25 vh-100">
+        <div
+          class="d-flex justify-content-between align-items-center text-white p-2"
+        >
           <h4>Invoice App</h4>
           <i class="bi bi-x-lg" id="sideBarBtn"></i>
         </div>
-      </div>
+      </div> -->
       <div class="container">
         <div class="row">
           <div class="col-12">
             <div class="d-flex justify-content-between align-items-center">
-              <i class=" bi bi-list fs-1" id="sideBarBtn"></i>
-              <h1 class="my-3">
-                Invoice App
-              </h1>
+              <i
+                class="bi bi-list fs-1"
+                id="sideBarBtn"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasScrolling"
+                aria-controls="offcanvasScrolling"
+              ></i>
+              <h1 class="my-3">Invoice App</h1>
               <button
                 class="btn btn-outline-dark d-print-none"
                 onclick="print()"
@@ -35,9 +41,12 @@
               <form id="invoiceForm">
                 <div class="row">
                   <div class="col-6">
-                    <label for="" class="form-label"> 
-                      Select Service 
-                      <span class="badge rounded-pill bg-dark" id="addServiceOpenBtn">
+                    <label for="" class="form-label">
+                      Select Service
+                      <span
+                        class="badge rounded-pill bg-dark"
+                        id="addServiceOpenBtn"
+                      >
                         Add Service
                       </span>
                     </label>
@@ -66,6 +75,7 @@
                 </div>
               </form>
             </div>
+            
             <table class="table table-bordered d-none" id="listTable">
               <thead>
                 <tr>
@@ -96,31 +106,91 @@
       </div>
       <h1 class="d-none d-print-block">This will show in print.</h1>
 
-      <!-- add service modal -->
-      <div id="addServiceModal" class=" position-fixed d-none bg-transparent-50 w-100 end-0 top-0">
-        <div class=" row justify-content-center align-items-center min-vh-100">
-          <div class=" col-12 col-md-6 col-lg-4">
-            <div class="p-5 bg-white">
-              <h4>Add New Service</h4>
-              <hr>
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="addServiceModal"
+        tabindex="-1"
+        aria-labelledby="exampleModaaddServiceModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModaaddServiceModalLabel">
+                Add New Service
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
               <form action="" id="addServiceForm">
                 <div class="mb-3">
                   <label for="" class="form-label">Service Title</label>
-                  <input type="text" name="serviceTitle" required class="form-control">
+                  <input
+                    type="text"
+                    name="serviceTitle"
+                    class="form-control"
+                    required
+                  />
                 </div>
                 <div class="mb-5">
                   <label for="" class="form-label">Price</label>
-                  <input type="number" name="servicePrice" required class="form-control">
+                  <input
+                    type="number"
+                    name="servicePrice"
+                    class="form-control"
+                    required
+                  />
                 </div>
-                <button id="closeServiceModalBtn" type="button" class="btn btn-outline-dark">Close</button>
-                <button class="btn btn-dark">Add New</button>
               </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                id="closeServiceModalBtn"
+                type="button"
+                class="btn btn-outline-dark"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button class="btn btn-dark" form="addServiceForm">
+                Add New
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <div
+      class="offcanvas offcanvas-start"
+      data-bs-scroll="true"
+      data-bs-backdrop="false"
+      tabindex="-1"
+      id="offcanvasScrolling"
+      aria-labelledby="offcanvasScrollingLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasScrollingLabel">
+          Offcanvas with body scrolling
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <p>Try scrolling the rest of the page to see this option in action.</p>
+      </div>
+    </div>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./js/invoice.js"></script>
   </body>
 </html>
