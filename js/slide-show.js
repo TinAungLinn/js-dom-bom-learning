@@ -25,8 +25,8 @@ const createCarousel = (photoList) => {
 
     indicators += `
       <button type="button" data-bs-target="#${id}" ${
-        index === 0 && `class="active"`
-      } data-bs-slide-to="${index}" aria-label="Slide 2"></button>
+      index === 0 && `class="active"`
+    } data-bs-slide-to="${index}" aria-label="Slide 2"></button>
     `;
   });
 
@@ -70,4 +70,26 @@ photoUpload.addEventListener("change", (event) => {
 createSlideShow.addEventListener("click", () => {
   const allPhotos = [...document.querySelectorAll(".photo")];
   createCarousel(allPhotos.map((el) => el.src));
+});
+
+selectPhoto.addEventListener("dragover", (event) => {
+  event.preventDefault();
+  // console.log(event)
+});
+
+selectPhoto.addEventListener("drop", (event) => {
+  event.preventDefault();
+  [...event.dataTransfer.files].forEach((file) => {
+    const img = document.createElement("img");
+
+    const reader = new FileReader();
+
+    reader.addEventListener("load", (event) => {
+      console.log(event.target);
+      img.src = event.target.result;
+      img.classList.add("photo", "me-2");
+      photos.append(img);
+    });
+    reader.readAsDataURL(file);
+  });
 });
