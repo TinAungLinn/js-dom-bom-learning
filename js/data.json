@@ -1,0 +1,9 @@
+{
+    "brand": "apple",
+    "model": "macbook",
+    "spec": {
+      "cpu": "i7",
+      "ram": "16GB",
+      "ssd": "1TB"
+    }
+  }
